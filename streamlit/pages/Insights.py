@@ -66,7 +66,7 @@ st.sidebar.title("🔍 Filtros de Estudo")
 st.sidebar.markdown("Refine a amostra para análise médica:")
 
 with st.sidebar.expander("👤 Perfil do Paciente", expanded=True):
-    idade_range = st.slider("Idade", int(df['idade'].min()), int(df['idade'].max()), (18, 55))
+    idade_range = st.slider("Idade", int(df['idade'].min()), int(df['idade'].max()), (18, 99))
     gen_sel = st.multiselect("Gênero", options=df['genero_label'].unique(), default=df['genero_label'].unique())
     fuma_sel = st.multiselect("Hábito de Fumar", options=df['fuma_label'].unique(), default=df['fuma_label'].unique())
 
