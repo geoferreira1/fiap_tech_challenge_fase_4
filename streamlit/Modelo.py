@@ -41,8 +41,8 @@ def load_model():
     """
     Carrega o modelo treinado (.joblib) com fallback para GitHub.
     """
-    local_path = 'models/modelo_final_xgboost.joblib'
-    github_url = "https://raw.githubusercontent.com/geoferreira1/fiap_tech_challenge_fase_4/main/models/modelo_final_xgboost.joblib"
+    local_path = 'models/modelo_final_random_forest.joblib'
+    github_url = "https://raw.githubusercontent.com/geoferreira1/fiap_tech_challenge_fase_4/main/models/modelo_final_random_forest.joblib"
 
     # 1. Tentativa Local
     try:
