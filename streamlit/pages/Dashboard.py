@@ -25,7 +25,7 @@ plt.rcParams.update({'axes.labelsize': 12, 'axes.titlesize': 14, 'figure.autolay
 
 # função de carregamento do dataset
 def load_data():
-    url = "https://raw.githubusercontent.com/geoferreira1/fiap_tech_challenge_fase_4/main/data/df_base.csv"
+    url = "https://raw.githubusercontent.com/geoferreira1/fiap_tech_challenge_fase_4/main/data_processed/df_base.csv"
     df = pd.read_csv(url)
     
     # Processa a coluna idade: converte para número e se o valor for impossível (>120), isola os dois primeiros dígitos
