@@ -75,7 +75,7 @@ df = load_data()
 # --- SIDEBAR: CENTRO DE FILTROS ---
 # Insere o cabeçalho principal na barra lateral
 st.sidebar.title("🔍 Filtros de Análise")
-st.sidebar.info('Expanda os menus abaixo para filtrar e visualizar as informações desejadas.', icon="ℹ️")
+st.sidebar.info('Expanda os menus abaixo para filtrar e visualizar as informações desejadas.')
 
 # Declara uma função que obtém valores únicos de uma coluna para preencher os menus de seleção
 def get_options(column):
@@ -136,7 +136,9 @@ for col, val in filtros_cat.items():
 
 # --- DASHBOARD ---
 # Exibe o título principal centralizado no topo do dashboard
-st.title("🏥 MedAnalytics: Dashboard de Saúde e Obesidade")
+st.caption("🏥 MedAnalytics | Gestão de Saúde <sup>1</sup>", unsafe_allow_html=True)
+st.title("🏥 Painel Informativo")
+st.markdown("""Acompanhamento de indicadores relacionados aos estilos de vidas coletados dos pacientes que passaram pela clínica.""")
 st.markdown("---")
 
 # Verifica se os filtros aplicados resultaram em uma tabela vazia
@@ -491,3 +493,4 @@ st.markdown("---")
 
 # Adiciona o crédito final da aplicação centralizado no rodapé
 st.caption("Dashboard MedAnalytics | Projeto do curso de Pós Graduação de Data Analytics da FIAP.")
+st.caption("* MedAnalytics | Gestão de Saúde é um nome fictício utilizado para fins estritamente acadêmicos.")

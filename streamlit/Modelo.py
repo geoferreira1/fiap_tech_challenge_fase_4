@@ -10,6 +10,7 @@ import numpy as np
 import joblib
 import requests
 import io
+import time
 
 # ==========================================================================
 # Config página
@@ -67,7 +68,7 @@ def config_page(): # Configurar menu lateral
     """
     with st.sidebar: # Inicia o contexto da barra lateral.
         st.markdown("🎯 Desafio") # Título da seção.
-        st.info("Modelo preditivo e análise de insights desenvolvivos para a pós graduação de **Data Analytics da FIAP.") # Quadro informativo.
+        st.info("Modelo preditivo e análise de insights desenvolvivos para a pós graduação de **Data Analytics da FIAP.**") # Quadro informativo.
         st.markdown("---") # Linha horizontal divisória.
         st.markdown("👩🏽‍💻 Aluno(a):")
         st.write("""
@@ -210,7 +211,7 @@ def get_clinic_input(): # Coletar os dados do questionario
         options=option_map.keys(),
         format_func=lambda option: option_map[option],
         selection_mode="single",
-        default=None 
+        default='Sim' 
         )
         
         fuma = st.pills(
@@ -218,7 +219,7 @@ def get_clinic_input(): # Coletar os dados do questionario
         options=option_map.keys(),
         format_func=lambda option: option_map[option],
         selection_mode="single",
-        default=None 
+        default='Sim' 
         )
         
         consumo_alimentos_altamente_caloricos = st.pills(
@@ -226,7 +227,7 @@ def get_clinic_input(): # Coletar os dados do questionario
         options=option_map.keys(),
         format_func=lambda option: option_map[option],
         selection_mode="single",
-        default=None 
+        default='Sim' 
         )
     
         
@@ -235,7 +236,7 @@ def get_clinic_input(): # Coletar os dados do questionario
         options=option_map.keys(),
         format_func=lambda option: option_map[option],
         selection_mode="single",
-        default=None 
+        default='Não' 
         )
         
         refeicao_selecionada = st.pills(
@@ -342,7 +343,8 @@ def main(): # Função princial
     model = load_model()
 
     # 3. Página do cálculo predição
-    st.title("🎯 Modelo de Predição sobre o risco de obesidade nas pessoas")
+    st.caption("🏥 MedAnalytics | Gestão de Saúde <sup>1</sup>", unsafe_allow_html=True)
+    st.title("🎯 Modelo de Predição | Risco de Obesidade")
     st.markdown("""
     Preencha o formulário a seguir para que o modelo calcule a probabilidade do risco de obesidade do paciente.
     """)
@@ -357,6 +359,18 @@ def main(): # Função princial
     if st.button("🎯 Clique aqui para saber a previsão", type="primary", use_container_width=True):
         if model is not None:
             try:
+                    # --- INÍCIO DA BARRA DE PROGRESSO ---
+                progress_text = "Analisando dados do paciente. Por favor, aguarde..."
+                my_bar = st.progress(0, text=progress_text)
+
+                for percent_complete in range(100):
+                    time.sleep(0.01)  # Simula o tempo de processamento
+                    my_bar.progress(percent_complete + 1, text=progress_text)
+
+                time.sleep(0.5) # Pequena pausa para o usuário ver os 100%
+                my_bar.empty()  # Limpa a barra após concluir
+                # --- FIM DA BARRA DE PROGRESSO ---
+
                 prediction = model.predict(input_df)
                 probability = model.predict_proba(input_df)
 
@@ -376,6 +390,11 @@ def main(): # Função princial
                 st.error(f"Ocorreu um erro técnico ao realizar a predição: {e}")
         else:
             st.error("📣 O modelo de predição retornou um erro, por gentileza verifique se os dados foram selecionados corretamente.")
-            
+
+    st.markdown("---")
+
+    # Adiciona o crédito final da aplicação centralizado no rodapé
+    st.caption("Projeto do curso de Pós Graduação de Data Analytics da FIAP.")
+    st.caption("* MedAnalytics | Gestão de Saúde é um nome fictício utilizado para fins estritamente acadêmicos.")
 if __name__ == "__main__":
     main()
