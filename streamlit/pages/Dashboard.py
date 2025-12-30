@@ -75,6 +75,7 @@ df = load_data()
 # --- SIDEBAR: CENTRO DE FILTROS ---
 # Insere o cabeçalho principal na barra lateral
 st.sidebar.title("🔍 Filtros de Análise")
+st.sidebar.info('Expanda os menus abaixo para filtrar e visualizar as informações desejadas.', icon="ℹ️")
 
 # Declara uma função que obtém valores únicos de uma coluna para preencher os menus de seleção
 def get_options(column):
