@@ -16,6 +16,9 @@ Este projeto visa entregar insumos para identificar de forma precoce aqueles pac
 ---
 
 ## 🏗️ Arquitetura do Projeto
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/79c985a1-ff10-4afd-be47-6bf70d0dd01b">
+</p>
 
 ### Pipeline de Desenvolvimento
 Todas as etapas do projeto foram disponibilizadas no arquivo `fiap_tech_challenge_fase_4.ipynb`, abrangendo:
